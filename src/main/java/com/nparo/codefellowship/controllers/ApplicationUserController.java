@@ -27,7 +27,7 @@ public class ApplicationUserController {
   @Autowired
   ApplicationUserRepository applicationUserRepository;
   
-  @PostMapping("/loginpage")
+  @PostMapping("/users")
   public RedirectView createUser(String username, String password, String firstName, String lastName,
                                  String dateOfBirth, String bio) {
     ApplicationUser newUser = new ApplicationUser(username, encoder.encode(password), firstName, lastName,

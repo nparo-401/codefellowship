@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Code Fellowship - Users</title>
+	<title>Code Fellowship - All Users</title>
 	<link
 	 href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	 rel="stylesheet"
@@ -45,7 +45,7 @@
 
 	<main class="container">
 		<h1>Click on a username to learn more about that person!</h1>
-		<ul th:each="singleUser : ${allUsers}">
+		<ul th:each="singleUser : ${allUsers}" style="list-style-type:none">
 			<li><a th:href="'/users/' + ${singleUser.id}"><span th:text="${singleUser.username}"></span></a></li>
 		</ul>
 	</main>
