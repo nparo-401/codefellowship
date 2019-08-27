@@ -36,7 +36,8 @@
 	<main class="container">
 		<h1>Welcome, <span th:text="${applicationUser.firstName} + ' ' + ${applicationUser.lastName}"></span>, to your
 			profile</h1>
-		<ul>
+		<img src="/default_image.png" width="100">
+		<ul style="list-style-type:none">
 			<li>Username: <span th:text="${applicationUser.username}"></span></li>
 			<li>Date of Birth: <span th:text="${applicationUser.dateOfBirth}"></span></li>
 			<li>Bio: <span th:text="${applicationUser.bio}"></span></li>
