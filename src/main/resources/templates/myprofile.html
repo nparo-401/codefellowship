@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Code Fellowship - Login</title>
+	<title>Code Fellowship - My Profile</title>
 	<link
 	 href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	 rel="stylesheet"
@@ -17,13 +17,16 @@
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse" id="navbarNav2" th:unless="${user}">
+			<div class="collapse navbar-collapse" id="navbarNav" th:if="${user}">
 				<ul class="navbar-nav">
-					<li class="nav-item active">
-						<a class="nav-link" href="/loginpage">Log In <span class="sr-only">(current)</span></a>
+					<li class="nav-item">
+						<a class="nav-link" href="/">Log Out</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="/signup">Sign Up</a>
+						<a class="nav-link" href="/users">All Users</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="/myprofile">My Profile <span class="sr-only">(current)</span></a>
 					</li>
 				</ul>
 			</div>
@@ -31,19 +34,13 @@
 	</header>
 	
 	<main class="container">
-		<h1>Log in to your account:</h1>
-		<form method="POST" action="/login">
-			<div class="form-group">
-				<label for="username">Username</label>
-				<input type="text" name="username" class="form-control" id="username" aria-describedby="emailHelp"
-				       placeholder="Username">
-			</div>
-			<div class="form-group">
-				<label for="password">Password</label>
-				<input type="password" name="password" class="form-control" id="password" placeholder="Password">
-			</div>
-			<button type="submit" class="btn btn-primary">Submit</button>
-		</form>
+		<h1>Welcome, <span th:text="${applicationUser.firstName} + ' ' + ${applicationUser.lastName}"></span>, to your
+			profile</h1>
+		<ul>
+			<li>Username: <span th:text="${applicationUser.username}"></span></li>
+			<li>Date of Birth: <span th:text="${applicationUser.dateOfBirth}"></span></li>
+			<li>Bio: <span th:text="${applicationUser.bio}"></span></li>
+		</ul>
 	</main>
 </body>
 </html>

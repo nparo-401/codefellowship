@@ -9,11 +9,20 @@
 
 <a name="run"></a>
 ### How to Run
+* Open terminal and cd into the codefellowship directory
+* Enter: `./gradlew bootRun`
+* Open web browser to: `localhost:8080`
 
 <a name="resources"></a>
 ### Resources
 * [Bootstrap Form](https://getbootstrap.com/docs/4.3/components/forms/)
 * [Bootstrap Nav Bar](https://getbootstrap.com/docs/4.3/components/navbar/#nav)
+* Jack Kinne
+* Fabian Brooks
+* Travis Cox
+* Matt Stuhring
+* Melfi Perez
+* Marisha Hoza
 
 <a name="files"></a>
 ### Files
@@ -36,10 +45,20 @@
     * [signup.html](./src/main/resources/templates/signup.html)
 * src/test
   * /java
-    [CodefellowshipApplicationTests.java](./src/test/java/com/nparo/codefellowship/CodefellowshipApplicationTests.java)
+    * [CodefellowshipApplicationTests.java](./src/test/java/com/nparo/codefellowship/CodefellowshipApplicationTests.java)
   
 
 <a name="methods"></a>
 ### Methods
+* `ApplicationUserController`
+  * `@PostMapping("/users") public RedirectView createUser(String username, String password, String firstName, String lastName,String dateOfBirth, String bio)`
+  * `@GetMapping("login") public String getLoginPage()`
+  * `@GetMapping("/myprofile") public String getMyProfile(Principal p, Model m)`
+  * `@GetMapping("/users") public String getAllUsers(Principal p, Model m)`
+  * `@GetMapping("/users/{id}") public String getOneUser(@PathVariable long id, Principal p, Model m)`
+* `HomeController`
+  * `@GetMapping("/") public String getIndex(Model m)`
+  * `@GetMapping("/loginpage") public String getLogin()`
+  * `@GetMapping("/signup") public String getSignUp()`
 
 **[Back to Top](#top)**

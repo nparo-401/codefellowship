@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Code Fellowship - Home</title>
+	<title>Code Fellowship - Single User</title>
 	<link
 	 href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	 rel="stylesheet"
@@ -17,6 +17,19 @@
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
+			<div class="collapse navbar-collapse" id="navbarNav" th:if="${user}">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="/">Log Out</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="/users">All Users <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/myprofile">My Profile</a>
+					</li>
+				</ul>
+			</div>
 			<div class="collapse navbar-collapse" id="navbarNav2" th:unless="${user}">
 				<ul class="navbar-nav">
 					<li class="nav-item">
@@ -31,8 +44,13 @@
 	</header>
 
 	<main class="container">
-		<h1>Welcome to Code Fellowship</h1>
-		<p>Please log in to your account or create a new account</p>
+		<h1>Learn more about <span th:text="${applicationUser.username}"></span>!</h1>
+		<ul>
+			<li>First Name: <span th:text="${applicationUser.firstName}"></span></li>
+			<li>Last Name: <span th:text="${applicationUser.lastName}"></span></li>
+			<li>Date of Birth: <span th:text="${applicationUser.dateOfBirth}"></span></li>
+			<li>Bio: <span th:text="${applicationUser.bio}"></span></li>
+		</ul>
 	</main>
 </body>
 </html>
