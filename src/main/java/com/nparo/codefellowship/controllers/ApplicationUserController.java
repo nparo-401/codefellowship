@@ -46,7 +46,6 @@ public class ApplicationUserController {
   public String getMyProfile(Principal p, Model m) {
     ApplicationUser applicationUser = applicationUserRepository.findByUsername(p.getName());
     m.addAttribute("applicationUser", applicationUser);
-    m.addAttribute("user", p);
     return "myprofile";
   }
   
@@ -56,7 +55,6 @@ public class ApplicationUserController {
     List<ApplicationUser> allUsers = applicationUserRepository.findAll();
     m.addAttribute("applicationUser", applicationUser);
     m.addAttribute("allUsers", allUsers);
-    m.addAttribute("user", p);
     return "users";
   }
   
@@ -66,7 +64,6 @@ public class ApplicationUserController {
     ApplicationUser currentUser = applicationUserRepository.findByUsername(p.getName());
     m.addAttribute("applicationUser", applicationUser);
     m.addAttribute("currentUser", currentUser);
-    m.addAttribute("user", p);
     return "singleUser";
   }
 }

@@ -28,7 +28,6 @@ public class PostController {
   public String getPost(Principal p, Model m) {
     ApplicationUser applicationUser = applicationUserRepository.findByUsername(p.getName());
     m.addAttribute("applicationUser", applicationUser);
-    m.addAttribute("user", p);
     return "post";
   }
   
