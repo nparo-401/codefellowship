@@ -2,6 +2,7 @@ package com.nparo.codefellowship.controllers;
 
 import com.nparo.codefellowship.models.ApplicationUser;
 import com.nparo.codefellowship.models.ApplicationUserRepository;
+import com.nparo.codefellowship.models.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -27,6 +28,9 @@ public class ApplicationUserController {
   @Autowired
   ApplicationUserRepository applicationUserRepository;
   
+  @Autowired
+  PostRepository postRepository;
+  
   @PostMapping("/users")
   public RedirectView createUser(String username, String password, String firstName, String lastName,
                                  String dateOfBirth, String bio) {
@@ -37,33 +41,29 @@ public class ApplicationUserController {
     SecurityContextHolder.getContext().setAuthentication(authentication);
     return new RedirectView("/myprofile");
   }
-  
-  @GetMapping("login")
-  public String getLoginPage() {
-    return "login";
-  }
 
   @GetMapping("/myprofile")
   public String getMyProfile(Principal p, Model m) {
     ApplicationUser applicationUser = applicationUserRepository.findByUsername(p.getName());
     m.addAttribute("applicationUser", applicationUser);
-    m.addAttribute("user", p);
     return "myprofile";
   }
   
   @GetMapping("/users")
   public String getAllUsers(Principal p, Model m) {
+    ApplicationUser applicationUser = applicationUserRepository.findByUsername(p.getName());
     List<ApplicationUser> allUsers = applicationUserRepository.findAll();
+    m.addAttribute("applicationUser", applicationUser);
     m.addAttribute("allUsers", allUsers);
-    m.addAttribute("user", p);
     return "users";
   }
   
   @GetMapping("/users/{id}")
   public String getOneUser(@PathVariable long id, Principal p, Model m) {
     ApplicationUser applicationUser = applicationUserRepository.findById(id).get();
+    ApplicationUser currentUser = applicationUserRepository.findByUsername(p.getName());
     m.addAttribute("applicationUser", applicationUser);
-    m.addAttribute("user", p);
+    m.addAttribute("currentUser", currentUser);
     return "singleUser";
   }
 }

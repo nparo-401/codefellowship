@@ -3,12 +3,10 @@ package com.nparo.codefellowship.models;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Collection;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 public class ApplicationUser implements UserDetails {
@@ -22,6 +20,9 @@ public class ApplicationUser implements UserDetails {
   String lastName;
   Date dateOfBirth;
   String bio;
+  
+  @OneToMany(fetch = FetchType.EAGER, mappedBy = "applicationUser")
+  List<Post> posts;
   
   public ApplicationUser() {}
   
@@ -68,6 +69,10 @@ public class ApplicationUser implements UserDetails {
   
   public String getBio () {
     return this.bio;
+  }
+  
+  public List<Post> getPosts() {
+    return this.posts;
   }
   
   @Override

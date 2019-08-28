@@ -17,11 +17,16 @@
 ### Resources
 * [Bootstrap Form](https://getbootstrap.com/docs/4.3/components/forms/)
 * [Bootstrap Nav Bar](https://getbootstrap.com/docs/4.3/components/navbar/#nav)
+* [Inline Border](https://developer.mozilla.org/en-US/docs/Web/CSS/border-inline-style)
+* [Timestamp Format](https://stackoverflow.com/questions/35170620/format-java-sql-timestamp-into-a-string/35170693)
+* [SQL Column Definition](https://docs.oracle.com/javaee/5/api/javax/persistence/Column.html#columnDefinition())
+* [Thymeleaf Fragment](https://www.baeldung.com/spring-thymeleaf-fragments)
 * Jack Kinne
 * Fabian Brooks
 * Travis Cox
 * Matt Stuhring
 * Melfi Perez
+* Renee Messick
 * Marisha Hoza
 
 <a name="files"></a>
@@ -35,14 +40,25 @@
   * /java/controllers
     * [ApplicationUserController](./src/main/java/com/nparo/codefellowship/controllers/ApplicationUserController.java)
     * [HomeController](./src/main/java/com/nparo/codefellowship/controllers/HomeController.java)
+    * [PostController](./src/main/java/com/nparo/codefellowship/controllers/PostController.java)
   * /java/models
     * [ApplicationUser](./src/main/java/com/nparo/codefellowship/models/ApplicationUser.java)
     * [ApplicationUserRepository](./src/main/java/com/nparo/codefellowship/models/ApplicationUserRepository.java)
-  * /resources/templates
-    * [error.html](./src/main/resources/templates/error.html)
-    * [index.html](./src/main/resources/templates/index.html)
-    * [loginpage.html](./src/main/resources/templates/loginpage.html)
-    * [signup.html](./src/main/resources/templates/signup.html)
+    * [Post](./src/main/java/com/nparo/codefellowship/models/Post.java)
+    * [PostRepository](./src/main/java/com/nparo/codefellowship/models/PostRepository.java)
+  * /resources
+    * /templates/fragments
+      * [nav](./src/main/resources/templates/fragments/nav.html)
+      * [posts](./src/main/resources/templates/fragments/posts.html)
+    * /templates
+      * [error](./src/main/resources/templates/error.html)
+      * [index](./src/main/resources/templates/index.html)
+      * [login](./src/main/resources/templates/login.html)
+      * [myprofile](./src/main/resources/templates/myprofile.html)
+      * [post](./src/main/resources/templates/post.html)
+      * [signup](./src/main/resources/templates/signup.html)
+      * [singleUser](./src/main/resources/templates/singleUser.html)
+      * [users](./src/main/resources/templates/users.html)
 * src/test
   * /java
     * [CodefellowshipApplicationTests.java](./src/test/java/com/nparo/codefellowship/CodefellowshipApplicationTests.java)
@@ -60,5 +76,8 @@
   * `@GetMapping("/") public String getIndex(Model m)`
   * `@GetMapping("/loginpage") public String getLogin()`
   * `@GetMapping("/signup") public String getSignUp()`
+* `PostController`
+  * `@GetMapping("/post") public String getPost(Principal p, Model m)`
+  * `@PostMapping("/post") public RedirectView createPost(String body, Principal p)`
 
 **[Back to Top](#top)**
