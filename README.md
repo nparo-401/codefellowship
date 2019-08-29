@@ -17,6 +17,8 @@
 ### Resources
 * [Bootstrap Form](https://getbootstrap.com/docs/4.3/components/forms/)
 * [Bootstrap Nav Bar](https://getbootstrap.com/docs/4.3/components/navbar/#nav)
+* [Bootstrap Card](https://getbootstrap.com/docs/4.3/components/card/)
+* [Bootstrap Card Sizing](https://getbootstrap.com/docs/4.3/components/card/#sizing)
 * [Inline Border](https://developer.mozilla.org/en-US/docs/Web/CSS/border-inline-style)
 * [Timestamp Format](https://stackoverflow.com/questions/35170620/format-java-sql-timestamp-into-a-string/35170693)
 * [SQL Column Definition](https://docs.oracle.com/javaee/5/api/javax/persistence/Column.html#columnDefinition())
