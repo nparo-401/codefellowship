@@ -53,7 +53,6 @@ public class ApplicationUserController {
   public String getAllUsers(Principal p, Model m) {
     ApplicationUser applicationUser = applicationUserRepository.findByUsername(p.getName());
     List<ApplicationUser> allUsers = applicationUserRepository.findAll();
-//    if (applicationUser.getFollowers().contains())
     m.addAttribute("applicationUser", applicationUser);
     m.addAttribute("allUsers", allUsers);
     return "users";
