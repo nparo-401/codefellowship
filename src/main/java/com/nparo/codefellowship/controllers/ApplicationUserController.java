@@ -56,9 +56,9 @@ public class ApplicationUserController {
   
   @GetMapping("/users/{id}")
   public String getOneUser(@PathVariable long id, Principal p, Model m) {
-    ApplicationUser applicationUser = applicationUserRepository.findById(id).get();
+    ApplicationUser otherUser = applicationUserRepository.findById(id).get();
     ApplicationUser currentUser = applicationUserRepository.findByUsername(p.getName());
-    m.addAttribute("applicationUser", applicationUser);
+    m.addAttribute("otherUser", otherUser);
     m.addAttribute("currentUser", currentUser);
     return "singleUser";
   }

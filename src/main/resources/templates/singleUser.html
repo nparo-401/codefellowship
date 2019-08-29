@@ -18,10 +18,10 @@
 		</header>
 	
 		<main class="container">
-			<h1>Learn more about <span th:text="${applicationUser.username}"></span>!</h1>
+			<h1>Learn more about <span th:text="${otherUser.username}"></span>!</h1>
 			<div>
-				<div th:replace="fragments/userInfo :: userInfo(appUser=${applicationUser})"></div>
-				<div th:replace="fragments/posts :: posts(appUser=${applicationUser}, currentUser=${applicationUser})"></div>
+				<div th:replace="fragments/userInfo :: userInfo(appUser=${otherUser})"></div>
+				<div th:replace="fragments/posts :: posts(appUser=${otherUser}, currentUser=${otherUser})"></div>
 			</div>
 		</main>
 	</body>
