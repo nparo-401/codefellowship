@@ -10,6 +10,18 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light {
   background-color: whitesmoke!important;
 }
 
+nav > p {
+  color: darkslategrey;
+}
+
 div.card {
   background-color: lightgray;
+}
+
+div > p {
+  color: whitesmoke!important;
+}
+
+.btn-primary {
+  color: whitesmoke!important;
 }
