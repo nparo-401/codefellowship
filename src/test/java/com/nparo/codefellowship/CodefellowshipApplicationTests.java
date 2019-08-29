@@ -37,7 +37,7 @@ public class CodefellowshipApplicationTests {
 	@Test
 	public void testLoginPageRoute() throws Exception {
 		this.mockMvc
-		.perform(get("/loginpage"))
+		.perform(get("/login"))
 		.andDo(print())
 		.andExpect(status().isOk())
 		.andExpect(content().string(containsString("Log in to your account:")));

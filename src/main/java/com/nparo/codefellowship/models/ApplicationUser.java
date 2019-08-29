@@ -4,9 +4,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.sql.Date;
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class ApplicationUser implements UserDetails {
@@ -14,7 +15,9 @@ public class ApplicationUser implements UserDetails {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   Long id;
   
+  @Column(unique = true)
   String username;
+  
   String password;
   String firstName;
   String lastName;
@@ -24,10 +27,20 @@ public class ApplicationUser implements UserDetails {
   @OneToMany(fetch = FetchType.EAGER, mappedBy = "applicationUser")
   List<Post> posts;
   
+  @ManyToMany
+  @JoinTable(
+   name="user_followers",
+   joinColumns = { @JoinColumn(name = "primaryUser") },
+   inverseJoinColumns = { @JoinColumn(name = "followedUser") }
+  )
+  Set<ApplicationUser> followers;
+  
+  @ManyToMany(mappedBy = "followers")
+  Set<ApplicationUser> usersFollowedBy;
+  
   public ApplicationUser() {}
   
-  public ApplicationUser(String username, String password, String firstName, String lastName, Date dateOfBirth,
-                         String bio) {
+  public ApplicationUser(String username, String password, String firstName, String lastName, Date dateOfBirth, String bio) {
     this.username = username;
     this.password = password;
     this.firstName = firstName;
@@ -73,6 +86,18 @@ public class ApplicationUser implements UserDetails {
   
   public List<Post> getPosts() {
     return this.posts;
+  }
+  
+  public void addFollower(ApplicationUser follower) {
+    this.followers.add(follower);
+  }
+  
+  public void removeFollower(ApplicationUser follower) {
+    this.followers.remove(follower);
+  }
+  
+  public Set<ApplicationUser> getFollowers() {
+    return this.followers;
   }
   
   @Override
