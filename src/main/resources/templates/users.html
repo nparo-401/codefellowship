@@ -9,6 +9,7 @@
 		 integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 		 crossorigin="anonymous"
 		>
+		<link href="/style.css" rel="stylesheet">
 	</head>
 	
 	<body>
@@ -18,19 +19,24 @@
 	
 		<main class="container">
 			<h1>Users:</h1>
-			<p>Click on a username to learn more about that person!</p>
-			<p>Click the follow button to follow a user!</p>
-			<p>Click on the unfollow button to unfollow a user!<br></p>
-			<div class="row">
-				<div class="col-sm-3" th:each="singleUser : ${allUsers}" style="margin-bottom: 10px">
+			<p>
+				Click on a username to learn more about that person!<br>
+				Click the follow button to follow a user!<br>
+				Click on the unfollow button to unfollow a user!<br>
+			</p>
+			<div class="row justify-content-center">
+				<div class="card" th:each="singleUser : ${allUsers}" style="margin-bottom: 10px">
 					<a th:href="'/users/' + ${singleUser.id}">
-						<img src="/default_image.png" width="100">
-						<p th:text="${singleUser.username}"></p>
+						<div class="card-body" style="width: 12rem;">
+							<img src="/default_image.png" width="20%" class="card-img-top" alt="profile image">
+							<p></p>
+							<h5 class="card-title" style="text-align: center" th:text="${singleUser.username}">User name</h5>
+						</div>
 					</a>
-					<div th:if="${singleUser.id} != ${applicationUser.id}">
+					<div class="card-body text-center" th:if="${singleUser.id} != ${applicationUser.id}">
 						<div th:if="!${applicationUser.followers.contains(singleUser)}">
 							<form method="POST" action="/users/follow">
-								<button type="submit" class="btn btn-primary">Follow Me!</button>
+								<button style="align-items: center" type="submit" class="btn btn-primary">Follow Me!</button>
 								<input type="hidden" name="followedUser" th:value="${singleUser.id}">
 							</form>
 						</div>
