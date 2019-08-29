@@ -21,6 +21,7 @@
 * [Timestamp Format](https://stackoverflow.com/questions/35170620/format-java-sql-timestamp-into-a-string/35170693)
 * [SQL Column Definition](https://docs.oracle.com/javaee/5/api/javax/persistence/Column.html#columnDefinition())
 * [Thymeleaf Fragment](https://www.baeldung.com/spring-thymeleaf-fragments)
+* [Thymeleaf Empty List Check](https://stackoverflow.com/questions/33106391/how-to-check-if-list-is-empty-using-thymeleaf)
 * Jack Kinne
 * Fabian Brooks
 * Travis Cox
@@ -50,8 +51,10 @@
     * /templates/fragments
       * [nav](./src/main/resources/templates/fragments/nav.html)
       * [posts](./src/main/resources/templates/fragments/posts.html)
+      * [userInfo](./src/main/resources/templates/fragments/userInfo.html)
     * /templates
       * [error](./src/main/resources/templates/error.html)
+      * [feed](./src/main/resources/templates/feed.html)
       * [index](./src/main/resources/templates/index.html)
       * [login](./src/main/resources/templates/login.html)
       * [myprofile](./src/main/resources/templates/myprofile.html)
@@ -62,7 +65,6 @@
 * src/test
   * /java
     * [CodefellowshipApplicationTests.java](./src/test/java/com/nparo/codefellowship/CodefellowshipApplicationTests.java)
-  
 
 <a name="methods"></a>
 ### Methods
@@ -72,6 +74,8 @@
   * `@GetMapping("/myprofile") public String getMyProfile(Principal p, Model m)`
   * `@GetMapping("/users") public String getAllUsers(Principal p, Model m)`
   * `@GetMapping("/users/{id}") public String getOneUser(@PathVariable long id, Principal p, Model m)`
+  * `@PostMapping("/users/follow") public RedirectView addFollower(long followedUser, Principal p)`
+  * `@PostMapping("/users/unfollow") public RedirectView removeFollower(long unfollowedUser, Principal p)`
 * `HomeController`
   * `@GetMapping("/") public String getIndex(Model m)`
   * `@GetMapping("/loginpage") public String getLogin()`

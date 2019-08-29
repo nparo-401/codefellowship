@@ -18,13 +18,9 @@
 	
 		<main class="container">
 			<h1>Learn more about <span th:text="${applicationUser.username}"></span>!</h1>
-			<div style="list-style-type:none">
-				<img src="/default_image.png" width="100">
-				<p>First Name: <span th:text="${applicationUser.firstName}"></span></p>
-				<p>Last Name: <span th:text="${applicationUser.lastName}"></span></p>
-				<p>Date of Birth: <span th:text="${applicationUser.dateOfBirth}"></span></p>
-				<p>Bio: <span th:text="${applicationUser.bio}"></span></p>
-				<div th:replace="fragments/posts :: posts(appUser=${applicationUser})"></div>
+			<div>
+				<div th:replace="fragments/userInfo :: userInfo(appUser=${applicationUser})"></div>
+				<div th:replace="fragments/posts :: posts(appUser=${applicationUser}, currentUser=${applicationUser})"></div>
 			</div>
 		</main>
 	</body>

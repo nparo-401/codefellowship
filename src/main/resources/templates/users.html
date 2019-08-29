@@ -17,13 +17,39 @@
 		</header>
 	
 		<main class="container">
-			<h1>Click on a username to learn more about that person!</h1>
+			<h1>Users:</h1>
+			<p>Click on a username to learn more about that person!</p>
+			<p>Click the follow button to follow a user!</p>
+			<p>Click on the unfollow button to unfollow a user!<br></p>
 			<div class="row">
 				<div class="col-sm-3" th:each="singleUser : ${allUsers}">
+					
 					<a th:href="'/users/' + ${singleUser.id}">
 						<img src="/default_image.png" width="100">
 						<p th:text="${singleUser.username}"></p>
 					</a>
+					<div th:if="${singleUser.id} != ${applicationUser.id}">
+						<div th:if="!${applicationUser.followers.contains(singleUser)}">
+							<form method="POST" action="/users/follow">
+								<button type="submit" class="btn btn-primary">Follow Me!</button>
+								<input type="hidden" name="followedUser" th:value="${singleUser.id}">
+							</form>
+						</div>
+						<div th:if="${applicationUser.followers.contains(singleUser)}">
+							<p
+							 class="btn btn-primary"
+							 style="background-color: red; border-color: red">Following!
+							</p>
+							<form method="POST" action="/users/unfollow">
+								<button
+								 type="submit"
+								 class="btn btn-primary"
+								 style="background-color: black; border-color: black">Unfollow Me!
+								</button>
+								<input type="hidden" name="unfollowedUser" th:value="${singleUser.id}">
+							</form>
+						</div>
+					</div>
 				</div>
 			</div>
 		</main>

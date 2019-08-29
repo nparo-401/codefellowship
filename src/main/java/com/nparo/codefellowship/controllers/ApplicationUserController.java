@@ -53,6 +53,7 @@ public class ApplicationUserController {
   public String getAllUsers(Principal p, Model m) {
     ApplicationUser applicationUser = applicationUserRepository.findByUsername(p.getName());
     List<ApplicationUser> allUsers = applicationUserRepository.findAll();
+//    if (applicationUser.getFollowers().contains())
     m.addAttribute("applicationUser", applicationUser);
     m.addAttribute("allUsers", allUsers);
     return "users";
@@ -65,5 +66,21 @@ public class ApplicationUserController {
     m.addAttribute("applicationUser", applicationUser);
     m.addAttribute("currentUser", currentUser);
     return "singleUser";
+  }
+  
+  @PostMapping("/users/follow")
+  public RedirectView addFollower(long followedUser, Principal p) {
+    ApplicationUser primaryUser = applicationUserRepository.findByUsername(p.getName());
+    primaryUser.addFollower(applicationUserRepository.findById(followedUser).get());
+    applicationUserRepository.save(primaryUser);
+    return new RedirectView("/users");
+  }
+  
+  @PostMapping("/users/unfollow")
+  public RedirectView removeFollower(long unfollowedUser, Principal p) {
+    ApplicationUser primaryUser = applicationUserRepository.findByUsername(p.getName());
+    primaryUser.removeFollower(applicationUserRepository.findById(unfollowedUser).get());
+    applicationUserRepository.save(primaryUser);
+    return new RedirectView("/users");
   }
 }
