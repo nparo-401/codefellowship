@@ -19,7 +19,7 @@ div.card {
 }
 
 div > p {
-  color: whitesmoke!important;
+  color: rgb(12, 12, 12);
 }
 
 .btn-primary {
