@@ -2,7 +2,6 @@ package com.nparo.codefellowship.controllers;
 
 import com.nparo.codefellowship.models.ApplicationUser;
 import com.nparo.codefellowship.models.ApplicationUserRepository;
-import com.nparo.codefellowship.models.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -27,9 +26,6 @@ public class ApplicationUserController {
   
   @Autowired
   ApplicationUserRepository applicationUserRepository;
-  
-  @Autowired
-  PostRepository postRepository;
   
   @PostMapping("/users")
   public RedirectView createUser(String username, String password, String firstName, String lastName,
