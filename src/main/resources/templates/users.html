@@ -22,8 +22,7 @@
 			<p>Click the follow button to follow a user!</p>
 			<p>Click on the unfollow button to unfollow a user!<br></p>
 			<div class="row">
-				<div class="col-sm-3" th:each="singleUser : ${allUsers}">
-					
+				<div class="col-sm-3" th:each="singleUser : ${allUsers}" style="margin-bottom: 10px">
 					<a th:href="'/users/' + ${singleUser.id}">
 						<img src="/default_image.png" width="100">
 						<p th:text="${singleUser.username}"></p>
